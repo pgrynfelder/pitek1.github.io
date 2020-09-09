@@ -21,7 +21,11 @@ function Home() {
         </Typography>
       </Box>
       <Box mb={4}>
-        <ButtonGroup variant="contained" color="primary">
+        <ButtonGroup
+          color="primary"
+          variant="contained"
+          style={{ maxWidth: "100%" }}
+        >
           <Button
             href="https://github.com/pitek1"
             target="_blank"
