@@ -3,15 +3,10 @@ import React from "react"
 import Snackbar from "@material-ui/core/Snackbar"
 import IconButton from "@material-ui/core/IconButton"
 import CloseIcon from "@material-ui/icons/Close"
+import { Button } from "@material-ui/core"
 
 export default function StaszicSnackbar() {
-  const ref = new URLSearchParams(window.location.search).get("ref") ?? ""
-  const staszicAlert =
-    ref.match(
-      /^(http:\/\/|http:\\|)pitek\.(w|home)\.staszic\.waw\.pl(|\/(.*))$/g
-    ) !== null
-
-  const [open, setOpen] = React.useState(staszicAlert)
+  const [open, setOpen] = React.useState(false)
 
   const handleClose = (event, reason) => {
     if (reason === "clickaway") {
@@ -21,8 +16,17 @@ export default function StaszicSnackbar() {
     setOpen(false)
   }
 
+  const handleClick = () => {
+    setOpen(true)
+  }
+
   return (
-    <div>
+    <>
+      <Button
+        id="open-staszic"
+        onClick={handleClick}
+        style={{ display: "none" }}
+      ></Button>
       <Snackbar
         anchorOrigin={{
           vertical: "bottom",
@@ -44,6 +48,6 @@ export default function StaszicSnackbar() {
           </>
         }
       />
-    </div>
+    </>
   )
 }

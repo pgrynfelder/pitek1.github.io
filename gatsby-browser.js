@@ -1,7 +1,9 @@
-/**
- * Implement Gatsby's Browser APIs in this file.
- *
- * See: https://www.gatsbyjs.org/docs/browser-apis/
- */
+export const onInitialClientRender = () => {
+  const ref = new URLSearchParams(window.location.search).get("ref") ?? ""
+  const staszicAlert =
+    ref.match(
+      /^(http:\/\/|http:\\|)pitek\.(w|home)\.staszic\.waw\.pl(|\/(.*))$/g
+    ) !== null
 
-// You can delete this file if you're not using it
+  if (staszicAlert) document.getElementById("open-staszic").click()
+}
