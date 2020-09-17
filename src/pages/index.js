@@ -40,13 +40,6 @@ function Home() {
           >
             Facebook
           </Button>
-          <Button
-            href="https://instagram.com/pgrynfelder"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Instagram
-          </Button>
         </ButtonGroup>
       </Box>
       <StaszicSnackbar />
