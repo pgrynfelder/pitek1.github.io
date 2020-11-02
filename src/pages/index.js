@@ -16,7 +16,7 @@ function Home() {
         <Typography>
           My name's <b>Piotr Grynfelder</b>. I'm a final grade student at
           Staszic High School in Warsaw, which is considered to be one of the
-          best in Poland. My major interests are Mathematics, Computer Science
+          best in Poland. My major interests include Mathematics, Computer Science
           and Physics. This site is likely to become my blog in the future.
         </Typography>
       </Box>
