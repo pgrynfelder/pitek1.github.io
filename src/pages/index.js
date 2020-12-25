@@ -12,20 +12,27 @@ function Home() {
       <Box mb={4}>
         <Typography variant="h2">Hello there</Typography>
       </Box>
-      <Box mb={4}>
+      {/* <Box mb={4}>
         <Typography>
           My name's <b>Piotr Grynfelder</b>. I'm a final grade student at
           Staszic High School in Warsaw, which is considered to be one of the
           best in Poland. My major interests include Mathematics, Computer Science
           and Physics. This site is likely to become my blog in the future.
         </Typography>
-      </Box>
+      </Box> */}
       <Box mb={4}>
         <ButtonGroup
           color="primary"
           variant="contained"
           style={{ maxWidth: "100%" }}
         >
+          <Button
+            href="https://www.linkedin.com/in/piotrgrynfelder/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            LinkedIn
+          </Button>
           <Button
             href="https://github.com/pitek1"
             target="_blank"
