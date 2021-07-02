@@ -2,6 +2,10 @@ module.exports = {
   siteMetadata: {
     siteUrl: "https://pgrynfelder.me",
     title: "Piotr Grynfelder",
+    titleTemplate: "Piotr Grynfelder | %s",
+    author: "Piotr Grynfelder",
+    description: "My portfolio site",
+    image: "https://via.placeholder.com/150"
   },
   plugins: [
     "gatsby-plugin-styled-components",
