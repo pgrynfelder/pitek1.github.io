@@ -1,23 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import PropTypes from "prop-types";
-import { useStaticQuery, graphql } from "gatsby";
 
 import "./layout.css";
-import { Grommet, Box, Footer, Text } from "grommet";
+import { Grommet, Box, Footer, Text, Main, ResponsiveContext } from "grommet";
 import { grommet } from "grommet/themes";
-import SEO from "./seo";
 
 const Layout = ({ children }) => {
-  const data = useStaticQuery(graphql`
-    query {
-      site {
-        siteMetadata {
-          title
-          author
-        }
-      }
-    }
-  `);
+  const size = useContext(ResponsiveContext);
 
   return (
     <Grommet
@@ -28,14 +17,7 @@ const Layout = ({ children }) => {
         flexDirection: "column",
       }}
     >
-      <Box as="main" pad="medium" flex overflow="auto">
-        {children}
-      </Box>
-      <Footer background="light-4" justify="center" pad="small">
-        <Text textAlign="center" size="small">
-          © {new Date().getFullYear()} Piotr Grynfelder
-        </Text>
-      </Footer>
+      {children}
     </Grommet>
   );
 };

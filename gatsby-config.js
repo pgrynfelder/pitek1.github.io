@@ -5,17 +5,22 @@ module.exports = {
     titleTemplate: "Piotr Grynfelder | %s",
     author: "Piotr Grynfelder",
     description: "My portfolio site",
-    image: "https://via.placeholder.com/150"
+    image: "dummy",
   },
   plugins: [
-    "gatsby-plugin-styled-components",
     "gatsby-plugin-image",
     "gatsby-plugin-react-helmet",
     "gatsby-plugin-sitemap",
     {
-      resolve: "gatsby-plugin-manifest",
+      resolve: `gatsby-plugin-manifest`,
       options: {
-        icon: "src/images/icon.png",
+        name: `pitek1.github.io`,
+        short_name: `pitek1`,
+        start_url: `/`,
+        background_color: `#663399`,
+        theme_color: `#663399`,
+        display: `minimal-ui`,
+        icon: `src/images/logo.jpg`,
       },
     },
     "gatsby-plugin-mdx",
@@ -37,5 +42,6 @@ module.exports = {
       },
       __key: "pages",
     },
+    "gatsby-plugin-styled-components",
   ],
 };
