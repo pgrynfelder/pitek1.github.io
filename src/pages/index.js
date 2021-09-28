@@ -2,7 +2,6 @@ import React from "react";
 import {
   Box,
   Grid,
-  Text,
   WorldMap,
   ResponsiveContext,
   Heading,
@@ -13,35 +12,30 @@ import {
 
 import SEO from "../components/seo";
 import Layout from "../components/layout";
-import styled from "styled-components";
 import { StaticImage } from "gatsby-plugin-image";
-import {
-  Book,
-  Facebook,
-  FacebookOption,
-  Home,
-  Instagram,
-  Linkedin,
-  LinkedinOption,
-  MailOption,
-} from "grommet-icons";
+import { Book, FacebookOption, Github, LinkedinOption } from "grommet-icons";
 
-const GoldenGrid = styled(Grid)`
-  aspect-ratio: 1.618 / 1;
-`;
+const Paper = (props) => <Box elevation="large" pad="small" {...props} />;
 
 const listData = [
   {
     icon: <Book />,
-    text: (
-      <>
-        University of Oxford
-        <br />
-        Mathematics and Computer Science
-        <br />
-        <small>2021-2025</small>
-      </>
-    ),
+    text: "University of Oxford\nMathematics and Computer Science\n2021-2025",
+  },
+];
+
+const socials = [
+  {
+    icon: <Github />,
+    href: "https://github.com/pitek1",
+  },
+  {
+    icon: <LinkedinOption />,
+    href: "https://www.linkedin.com/in/piotrgrynfelder/",
+  },
+  {
+    icon: <FacebookOption />,
+    href: "https://facebook.com/pgrynfelder",
   },
 ];
 
@@ -63,9 +57,9 @@ const IndexPage = () => {
     large: ["1fr", "1.618fr"],
   };
   const rows = {
-    small: ["min-content", "min-content", "min-content"],
-    medium: ["1fr", "1.618fr"],
-    large: ["1fr", "1.618fr"],
+    small: "unset",
+    medium: ["1.618fr", "1fr"],
+    large: ["1.618fr", "1fr"],
   };
 
   return (
@@ -77,36 +71,36 @@ const IndexPage = () => {
             columns={columns[size]}
             rows={rows[size]}
             areas={areas[size]}
-            width={"min(1300px, 100%)"}
+            width="min(1300px, 100%)"
             margin="auto"
             gap="medium"
             pad="medium"
-            style={{ aspectRatio: (size == "small" ? "auto" : "1.618 / 1") }}
+            style={{ aspectRatio: size === "small" ? "auto" : "1.618 / 1" }}
           >
-            <Box
-              gridArea="profile"
-              elevation="medium"
-              full
-              pad="small"
-              align="center"
-            >
+            <Paper gridArea="profile" align="center">
               <Box
                 round="full"
                 overflow="hidden"
-                margin={{ top: "large"}}
+                margin={{ top: "large" }}
                 height="small"
                 style={{ aspectRatio: "1" }}
               >
-                <StaticImage src="../images/me.jpg" alt="Me" />
+                <StaticImage src="../images/me.jpg" alt="A photo of myself" />
               </Box>
               <Heading size="small" level="2">
                 Piotr Grynfelder
               </Heading>
               <Nav direction="row">
-                <Anchor icon={<LinkedinOption />} />
-                <Anchor icon={<FacebookOption />} />
-                <Anchor icon={<Instagram />} />
-                <Anchor icon={<MailOption />} />
+                {socials.map(({ icon, href, title }, index) => (
+                  <Anchor
+                    icon={icon}
+                    href={href}
+                    key={index}
+                    title={title}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  />
+                ))}
               </Nav>
               <List
                 defaultItemProps={{ whiteSpace: "pre", background: "brand" }}
@@ -115,8 +109,8 @@ const IndexPage = () => {
                 data={listData}
                 border={false}
               />
-            </Box>
-            <Box gridArea="map" elevation="medium" full pad="small">
+            </Paper>
+            <Paper gridArea="map">
               <WorldMap
                 color="brand"
                 display="block"
@@ -124,14 +118,14 @@ const IndexPage = () => {
                 places={[
                   {
                     name: "University of Oxford",
-                    location: [51.752022, -1.257677],
+                    location: [47.752022, -1.257677],
                     color: "accent-1",
-                    onClick: (name) => {},
+                    onHover: (hovered) => console.log(hovered),
                   },
                 ]}
               />
-            </Box>
-            <Box gridArea="cv" elevation="medium" full></Box>
+            </Paper>
+            <Paper gridArea="cv"></Paper>
           </Grid>
         )}
       </ResponsiveContext.Consumer>
