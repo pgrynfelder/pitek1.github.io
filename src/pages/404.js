@@ -1,23 +1,29 @@
-import React from "react"
+import { Heading, Paragraph } from "grommet";
+import * as React from "react";
+import Layout from "../components/layout";
+import Link from "../components/link";
+import SEO from "../components/seo";
 
-import Layout from "../components/layout"
-import SEO from "../components/seo"
-import { Typography, Box } from "@material-ui/core"
-import { Link } from "gatsby-theme-material-ui"
+const NotFoundPage = () => {
+  return (
+    <Layout>
+      <SEO title="Page not found" />
+      <Heading>Page not found</Heading>
+      <Paragraph>
+        Sorry 😔 The page you were looking for was not found.
+        <br />
+        {process.env.NODE_ENV === "development" ? (
+          <>
+            <br />
+            Try creating a page in <code>src/pages/</code>.
+            <br />
+          </>
+        ) : null}
+        <br />
+        <Link to="/">Go to homepage</Link>.
+      </Paragraph>
+    </Layout>
+  );
+};
 
-const NotFoundPage = () => (
-  <Layout>
-    <SEO title="404: Not found" />
-    <Box mb={4}>
-      <Typography variant="h2">404: Not found</Typography>
-    </Box>
-    <Box mb={4}>
-      <Typography>
-        You just hit a route that doesn&#39;t exist...{" "}
-        <Link to="/">Return to homepage.</Link>
-      </Typography>
-    </Box>
-  </Layout>
-)
-
-export default NotFoundPage
+export default NotFoundPage;

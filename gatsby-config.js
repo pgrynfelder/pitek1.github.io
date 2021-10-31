@@ -1,21 +1,16 @@
 module.exports = {
   siteMetadata: {
-    title: `Piotr Grynfelder`,
-    description: `Piotr Grynfelder's website`,
-    lang: `en`,
+    siteUrl: "https://pgrynfelder.me",
+    title: "Piotr Grynfelder",
+    titleTemplate: "Piotr Grynfelder | %s",
+    author: "Piotr Grynfelder",
+    description: "My portfolio site",
+    image: "dummy",
   },
   plugins: [
-    `gatsby-theme-material-ui`,
-    `gatsby-plugin-react-helmet`,
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `images`,
-        path: `${__dirname}/src/images`,
-      },
-    },
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
+    "gatsby-plugin-image",
+    "gatsby-plugin-react-helmet",
+    "gatsby-plugin-sitemap",
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -25,11 +20,28 @@ module.exports = {
         background_color: `#663399`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/images/logo.jpg`, // This path is relative to the root of the site.
+        icon: `src/images/logo.jpg`,
       },
     },
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
+    "gatsby-plugin-mdx",
+    "gatsby-plugin-sharp",
+    "gatsby-transformer-sharp",
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        name: "images",
+        path: "./src/images/",
+      },
+      __key: "images",
+    },
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        name: "pages",
+        path: "./src/pages/",
+      },
+      __key: "pages",
+    },
+    "gatsby-plugin-styled-components",
   ],
-}
+};

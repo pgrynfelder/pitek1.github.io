@@ -1,23 +1,50 @@
-import React from "react"
-import PropTypes from "prop-types"
-import { Container, Paper, Box } from "@material-ui/core"
+import React from "react";
+import PropTypes from "prop-types";
+
+import "./layout.css";
+import { Grommet } from "grommet";
+import { grommet } from "grommet/themes";
+import { deepMerge } from "grommet/utils";
+import { css } from "styled-components";
+
+const theme = deepMerge(grommet, {
+  list: {
+    item: {
+      extend: {
+        whiteSpace: "pre-wrap",
+      },
+    },
+  },
+  worldMap: {
+    place: {
+      base: "10px",
+      active: "20px",
+    },
+    extend: css`
+      path {
+        transition: stroke-width 0.1s ease-in-out;
+      }
+    `,
+  },
+});
 
 const Layout = ({ children }) => {
   return (
-    <>
-      <Container maxWidth="md">
-        <Box my={4}>
-          <Paper>
-            <Box p={4}>{children}</Box>
-          </Paper>
-        </Box>
-      </Container>
-    </>
-  )
-}
+    <Grommet
+      theme={theme}
+      full
+      style={{
+        display: "flex",
+        flexDirection: "column",
+      }}
+    >
+      {children}
+    </Grommet>
+  );
+};
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
-}
+};
 
-export default Layout
+export default Layout;
