@@ -1,16 +1,18 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Anchor } from "grommet";
-import { navigate } from "gatsby";
+import { navigate, Link as GatsbyLink } from "gatsby";
 
-const Link = ({ to, ...rest }) => (
+const Link = (props) => (
   <Anchor
-    href={to}
-    onClick={(ev) => {
-      navigate(to);
-      ev.preventDefault();
-    }}
-    {...rest}
+    as={GatsbyLink}
+    // to={to}
+    // onClick={(ev) => {
+    //   navigate(to);
+    //   ev.preventDefault();
+    // }}
+    // {...rest}
+    {...props}
   />
 );
 

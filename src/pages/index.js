@@ -8,16 +8,26 @@ import {
   List,
   Anchor,
   Nav,
+  Button,
 } from "grommet";
 
 import SEO from "../components/seo";
 import Layout from "../components/layout";
 import { StaticImage } from "gatsby-plugin-image";
-import { Book, FacebookOption, Github, LinkedinOption } from "grommet-icons";
-
-const Paper = (props) => <Box elevation="large" pad="small" {...props} />;
+import {
+  Book,
+  FacebookOption as Facebook,
+  Github,
+  LinkedinOption as Linkedin,
+  MailOption as Mail,
+} from "grommet-icons";
+import Paper from "../components/paper";
 
 const listData = [
+  {
+    icon: <Mail />,
+    text: "piotr@grynfelder.dev",
+  },
   {
     icon: <Book />,
     text: "University of Oxford\nMathematics and Computer Science\n2021-2025",
@@ -30,12 +40,23 @@ const socials = [
     href: "https://github.com/pitek1",
   },
   {
-    icon: <LinkedinOption />,
+    icon: <Linkedin />,
     href: "https://www.linkedin.com/in/piotrgrynfelder/",
   },
   {
-    icon: <FacebookOption />,
+    icon: <Facebook />,
     href: "https://facebook.com/pgrynfelder",
+  },
+];
+
+const projects = [
+  {
+    text: "DeepSat",
+    href: "https://deepsat.github.io",
+  },
+  {
+    text: "Maths Clinic",
+    href: "http://klinikamatmy.pl",
   },
 ];
 
@@ -103,7 +124,6 @@ const IndexPage = () => {
                 ))}
               </Nav>
               <List
-                defaultItemProps={{ whiteSpace: "pre", background: "brand" }}
                 primaryKey="icon"
                 secondaryKey="text"
                 data={listData}
@@ -125,7 +145,13 @@ const IndexPage = () => {
                 ]}
               />
             </Paper>
-            <Paper gridArea="cv"></Paper>
+            <Paper gridArea="cv" justify="center">
+              <Nav direction="row" alignSelf="center">
+                {projects.map(({ text, href }) => (
+                  <Button href={href} primary label={text} />
+                ))}
+              </Nav>
+            </Paper>
           </Grid>
         )}
       </ResponsiveContext.Consumer>

@@ -12,6 +12,7 @@ const theme = deepMerge(grommet, {
     item: {
       extend: {
         whiteSpace: "pre-wrap",
+        justifyContent: "left"
       },
     },
   },
