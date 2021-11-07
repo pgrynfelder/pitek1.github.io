@@ -62,7 +62,7 @@ const projects = [
 
 const IndexPage = () => {
   const areas = {
-    small: [["profile"], ["map"], ["cv"]],
+    small: [["profile"], ["cv"], ["map"]],
     medium: [
       ["profile", "map"],
       ["profile", "cv"],
@@ -147,8 +147,14 @@ const IndexPage = () => {
             </Paper>
             <Paper gridArea="cv" justify="center">
               <Nav direction="row" alignSelf="center">
-                {projects.map(({ text, href }) => (
-                  <Button href={href} primary label={text} />
+                {projects.map(({ text, href }, index) => (
+                  <Button
+                    href={href}
+                    primary
+                    label={text}
+                    key={index}
+                    margin={{ vertical: "medium" }}
+                  />
                 ))}
               </Nav>
             </Paper>
