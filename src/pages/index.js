@@ -22,11 +22,12 @@ import {
   MailOption as Mail,
 } from "grommet-icons";
 import Paper from "../components/paper";
+import Email from "../components/email";
 
 const listData = [
   {
     icon: <Mail />,
-    text: "piotr@grynfelder.dev",
+    text: <Email>***REMOVED***</Email>,
   },
   {
     icon: <Book />,
