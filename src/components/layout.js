@@ -12,7 +12,7 @@ const theme = deepMerge(grommet, {
     item: {
       extend: {
         whiteSpace: "pre-wrap",
-        justifyContent: "left"
+        justifyContent: "left",
       },
     },
   },
@@ -33,10 +33,8 @@ const Layout = ({ children }) => {
   return (
     <Grommet
       theme={theme}
-      full
       style={{
-        display: "flex",
-        flexDirection: "column",
+        height: "100%",
       }}
     >
       {children}

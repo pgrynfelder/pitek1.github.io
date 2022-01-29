@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import styled from "styled-components";
 
 const Email = ({ children }) => {
   const [email, setEmail] = useState(
@@ -7,7 +6,7 @@ const Email = ({ children }) => {
   );
   useEffect(() => {
     setEmail(children);
-  });
+  }, [children]);
 
   return <>{email}</>;
 };

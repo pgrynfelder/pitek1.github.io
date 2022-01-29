@@ -9,6 +9,8 @@ import {
   Anchor,
   Nav,
   Button,
+  Text,
+  Tag,
 } from "grommet";
 
 import SEO from "../components/seo";
@@ -53,11 +55,18 @@ const socials = [
 const projects = [
   {
     text: "DeepSat",
+    tag: "ai, segmentation, object detection",
     href: "https://deepsat.github.io",
   },
   {
     text: "Maths Clinic",
+    tag: "django, sql, backend, matching",
     href: "http://klinikamatmy.pl",
+  },
+  {
+    text: "More projects",
+    href: "https://github.com/pitek1",
+    secondary: true,
   },
 ];
 
@@ -93,11 +102,11 @@ const IndexPage = () => {
             columns={columns[size]}
             rows={rows[size]}
             areas={areas[size]}
-            width="min(1300px, 100%)"
+            width="100%"
+            height={{ min: "100%" }}
             margin="auto"
             gap="medium"
             pad="medium"
-            style={{ aspectRatio: size === "small" ? "auto" : "1.618 / 1" }}
           >
             <Paper gridArea="profile" align="center">
               <Box
@@ -131,32 +140,61 @@ const IndexPage = () => {
                 border={false}
               />
             </Paper>
-            <Paper gridArea="map">
-              <WorldMap
-                color="brand"
-                display="block"
-                preserveAspectRatio={undefined}
-                places={[
-                  {
-                    name: "University of Oxford",
-                    location: [47.752022, -1.257677],
-                    color: "accent-1",
-                    onHover: (hovered) => console.log(hovered),
-                  },
-                ]}
-              />
+            <Paper gridArea="map" justify="center">
+              <Box height={{ max: "45vh;" }}>
+                <WorldMap
+                  color="brand"
+                  display="block"
+                  preserveAspectRatio={undefined}
+                  places={[
+                    {
+                      name: "University of Oxford",
+                      // location: [47.752022, -1.257677],
+                      location: [51.752, -1.2577],
+                      color: "accent-1",
+                      content: (
+                        <Tag
+                          name="Oxford"
+                          style={{ borderBottomRightRadius: "0" }}
+                        />
+                      ),
+                      dropProps: {
+                        align: { right: "left", bottom: "top" },
+                        background: "none",
+                        elevation: "none",
+                      },
+                    },
+                  ]}
+                />
+              </Box>
             </Paper>
             <Paper gridArea="cv" justify="center">
-              <Nav direction="row" alignSelf="center">
-                {projects.map(({ text, href }, index) => (
-                  <Button
-                    href={href}
-                    primary
-                    label={text}
-                    key={index}
-                    margin={{ vertical: "medium" }}
-                  />
-                ))}
+              <Nav
+                direction="row"
+                alignSelf="center"
+                wrap={true}
+                justify="center"
+              >
+                {projects.map(({ text, href, secondary, tag }, index) =>
+                  secondary ? (
+                    <Button
+                      secondary
+                      href={href}
+                      label={text}
+                      key={index}
+                      margin={{ vertical: "medium" }}
+                    />
+                  ) : (
+                    <Tag
+                      as={Anchor}
+                      href={href}
+                      name={text}
+                      value={tag}
+                      key={index}
+                      margin={{ vertical: "medium" }}
+                    />
+                  )
+                )}
               </Nav>
             </Paper>
           </Grid>
