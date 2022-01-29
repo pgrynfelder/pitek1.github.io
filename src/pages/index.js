@@ -27,7 +27,7 @@ import Email from "../components/email";
 const listData = [
   {
     icon: <Mail />,
-    text: <Email>***REMOVED***</Email>,
+    text: <Email>piotr@grynfelder.dev</Email>,
   },
   {
     icon: <Book />,
