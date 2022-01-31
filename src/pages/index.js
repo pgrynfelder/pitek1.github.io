@@ -88,7 +88,7 @@ const IndexPage = () => {
     large: ["1fr", "1.618fr"],
   };
   const rows = {
-    small: "unset",
+    small: ["auto"],
     medium: ["1.618fr", "1fr"],
     large: ["1.618fr", "1fr"],
   };
@@ -108,7 +108,7 @@ const IndexPage = () => {
             gap="medium"
             pad="medium"
           >
-            <Paper gridArea="profile" align="center">
+            <Paper gridArea="profile" align="center" justify="center">
               <Box
                 round="full"
                 overflow="hidden"
